@@ -16,21 +16,27 @@ public class MemoryMemberRepository implements MemberRepositiry {
         return member;
     }
 
+    // 회원 ID로 조회
     @Override
     public Optional<Member> findById(Long id) {
         return Optional.ofNullable(store.get(id));
     }
 
+    // 회원 이름으로 조회
     @Override
     public Optional<Member> findByName(String name) {
-        store.values().stream()
+        return store.values().stream()
                 .filter(member -> member.getName().equals(name))
                 .findAny();
-        return Optional.empty();
     }
 
+    // 전체 회원 조회
     @Override
     public List<Member> findAll() {
         return new ArrayList<>(store.values());
+    }
+
+    public void clearStore() {
+        store.clear();
     }
 }
