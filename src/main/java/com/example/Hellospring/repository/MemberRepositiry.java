@@ -1,10 +1,12 @@
 package com.example.Hellospring.repository;
 
 import com.example.Hellospring.domain.Member;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public interface MemberRepositiry {
 
     Member save(Member member);
